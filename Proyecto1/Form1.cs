@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,22 +19,17 @@ namespace Proyecto1
         private int resultado = 0;
         private char operador = ' ';
 
-        // Control de modos de juego
-        private int modoJuego = 1; // 1 = Individual, 2 = Dos Jugadores
+        private int modoJuego = 1; 
         private string jactual = "Jugador 1";
-
-        // Estadísticas Jugador 1
         private int conterroresJ1 = 0;
         private int contnivelJ1 = 0;
         private int aciertosJ1 = 0;
 
-        // Estadísticas Jugador 2 (Modo Acompañado)
         private int conterroresJ2 = 0;
         private int contnivelJ2 = 0;
         private int aciertosJ2 = 0;
         private string nombreJ2 = "Jugador 2";
 
-        // Requerimiento 4: Arreglos para el historial
         private const int maximo = 100;
         private string[] hjugadores = new string[maximo];
         private int[] hpuntajes = new int[maximo];
@@ -46,7 +41,6 @@ namespace Proyecto1
             ConfigurarInicioJuego();
         }
 
-        // Configuración de partida usando MessageBox nativo
         private void ConfigurarInicioJuego()
         {
             DialogResult respuesta = MessageBox.Show(
@@ -72,7 +66,7 @@ namespace Proyecto1
 
         private void IniciarNuevaOperacion()
         {
-            // Validar fin de partida
+
             if (modoJuego == 1 && conterroresJ1 >= 4)
             {
                 MessageBox.Show($"¡Juego terminado, {jactual}! Acumulaste {aciertosJ1} aciertos.", "Fin del Juego", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -153,7 +147,6 @@ namespace Proyecto1
                 lerrores.Text = conterroresJ2.ToString();
             }
 
-            // Mostrar el turno actual en pantalla
             lturno.Text = $"Turno de: {jactual}";
         }
 
@@ -194,7 +187,6 @@ namespace Proyecto1
                 }
             }
 
-            // Alternar turno en Modo 2 Jugadores
             if (modoJuego == 2)
             {
                 if (jactual == "Jugador 1" && conterroresJ2 < 4)
@@ -228,7 +220,7 @@ namespace Proyecto1
                 return;
             }
 
-            // Ordenamiento Burbuja descendente sobre arreglos estáticos corregido
+
             for (int i = 0; i < historial - 1; i++)
             {
                 for (int j = 0; j < historial - i - 1; j++)
@@ -266,7 +258,7 @@ namespace Proyecto1
             jactual = "Jugador 1";
         }
 
-        // Eventos de los Botones
+       
         private void btnClasificacion_Click(object sender, EventArgs e)
         {
             MostrarTablaClasificacion();
